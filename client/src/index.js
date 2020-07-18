@@ -6,7 +6,7 @@ import App from './App';
 import configureStore from './store/configurestore'
 import {Provider }from 'react-redux'
 import {startSetUser} from'./action/users'
-
+import{startcreateTicket} from './action/tickets'
 const store=configureStore()
 console.log(store.getState())
 store.subscribe(()=>{
@@ -15,6 +15,7 @@ store.subscribe(()=>{
 //prevents page reload
 if(localStorage.getItem('authToken')){
     store.dispatch(startSetUser())
+    store.dispatch(startcreateTicket)
 }
 
 const jsx=(

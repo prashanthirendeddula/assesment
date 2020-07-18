@@ -8,15 +8,55 @@ module.exports.create=(req,res)=>{
     const user=new User(body)
     user.save()
     .then((user)=>{
-        res.send(_.pick(user,['_id','username','email']))
-         .then((response)=>{
-              console.log(response.data)
-          })
-          .catch((err)=>{
-              res.send(err)
-          })
+     //   res.send(_.pick(user,['_id','username','email','zip'])) 
+     const contactObj={
+        zip :user.zip ,
+        lastName : user.lastName,
+        country : user.country,
+        secondaryEmail : user.secondaryEmail,
+        city : user.city,
+        facebook : user.facebook,
+        mobile : user.mobile,
+        description : user.description,
+        type : user.type,
+        title : user.title,
+        firstName : user.firstName,
+        twitter : user.twitter,
+        phone : user.phone,
+        street : user.street,
+        state : user.state,
+        email : user.email
+     }
+    
+     console.log("##################", contactObj);
+     Axios.post('https://desk.zoho.in/api/v1/contacts',contactObj
+    ,
+    {
+        headers: {
+         'orgId': '60001280952',
+         'Authorization': 'aa8cd2f4d25aa3418e47f953ad9fe323',
+         'Content-Type': 'application/x-www-form-urlencoded',
+         "Access-Control-Allow-Origin": "*",
+   
+         }
+     }
+     ).then((response)=>{
+         console.log("Successsssssssssss -- ");
+         console.log("response.data.id -- " + response.data.id);
+         user.contactId = response.data.id;
+         console.log("User obj -- " + user);
+      res.send(user.contactId);
+
     })
     .catch((err)=>{
+        console.log("ERRORRRRRRRRRRRRR1111111111111" + err);
+        console.log("ERRORRRRRRRRRRRRR22222222222" + err.message);
+        res.send(err)
+    })
+ 
+})
+    .catch((err)=>{
+        console.log("ERRORRRRRRRRRRRRR#################");
         res.send(err)
     })
 }

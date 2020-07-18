@@ -24,11 +24,89 @@ const userSchema=new Schema({
 
 
     },
+    
     password:{
         type:String,
         required:true,
         minlength:5,
         maxlength:128
+    },
+    contactId:{
+        type:c=String,
+        required:false
+    },
+    lastName:{
+        type:String,
+        required:true
+    },
+    country:{
+        type:String,
+        required:true
+    },
+    city:{
+        type:String,
+        required:true
+    },
+    secondaryEmail:{
+        type:String,
+        required:true
+    },
+    facebook:{
+        type:String,
+        required:true
+    },
+    mobile:{
+        type:Number,
+        required:true,
+        maxlength:10
+    },
+    description:{
+        type:String,
+        required:true
+    },
+    firstName:{
+        type:String,
+        
+    },
+    twitter:{
+        type:String,
+        required:true
+    },
+    state:{
+        type:String,
+        required:true
+    },
+    street:{
+        type:String,
+        required:true
+    },
+    phone:{
+        type:String,
+        required:true
+    },
+    type:{
+        type:String,
+        required:true
+    },
+    title:{
+        type:String,
+        required:true
+    },
+    ownerId:{
+        type:String,
+        required:true
+    },
+    accountId:{
+        type:String,
+        required:true
+    },
+    phone:{
+        type:String,
+        required:true
+    },
+    zip:{
+        type:String,
+        required:true
     },
     tokens:[
         {

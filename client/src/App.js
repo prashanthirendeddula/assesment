@@ -15,8 +15,8 @@ import Register from './components/auth/Register'
 import Login  from './components/auth/Login'
 import Account from "./components/Account"
 import {startUserLogout} from "./action/users"
-
-
+import ticketNew from"./components/TicketNew"
+import TicketList from "./components/TicketList"
 function App(props){
   const handleLogout=()=>{
           props.dispatch(startUserLogout())
@@ -55,6 +55,13 @@ function App(props){
             <li class="nav-item">
 
              <Link className="nav-link" to="#" onClick={handleLogout}>Logout</Link></li>
+             <li class="nav-item">
+
+         <Link className="nav-link" to="/users/ticketNew" >create Ticket</Link></li>
+         <li class="nav-item">
+
+        <Link className="nav-link" to="/users/ticketList" >TicketsList</Link></li>
+
 
             </React.Fragment>
           ):(
@@ -82,7 +89,9 @@ function App(props){
           <Route path='/users/register'component={Register}/>
           <Route path='/users/login'component={Login}/>
           <Route path='/users/account'component={Account}/>
-         
+           <Route path='/users/ticketNew'component={ticketNew}/>
+           <Route path='/users/ticketList'component={TicketList}/>
+
           </Switch>
            </div>
           

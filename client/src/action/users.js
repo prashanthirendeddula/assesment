@@ -1,7 +1,7 @@
 import axios from '../config/axios'
 import Swal from "sweetalert2"
 import Axios from "axios"
-export const startRegister=(formData,redirect)=>{
+export const startRegister=(formData,contactObj,redirect)=>{
     return (dispatch)=>{
         axios.post('/users/register',formData)
         .then((response)=>{
@@ -20,6 +20,9 @@ export const startRegister=(formData,redirect)=>{
                     icon:"error"
                 })
             }else{
+                const options = {
+                    headers: {'X-Custom-Header': 'value'}
+                  };
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
@@ -27,7 +30,7 @@ export const startRegister=(formData,redirect)=>{
                     timer: 1500
                   })
                 redirect()
-              // props.history.push('/users/login')
+              // props.history.push('/use rs/login')
             }
             })
         }
